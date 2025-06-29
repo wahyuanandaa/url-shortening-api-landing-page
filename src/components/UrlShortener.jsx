@@ -46,35 +46,30 @@ const UrlShortener = () => {
   ]
 
   const tryAPI = async (apiEndpoint) => {
-    try {
-      const response = await fetch(apiEndpoint.url, {
-        method: "GET",
-        headers: {
-          Accept: "application/json"
-        },
-        // Add timeout
-        signal: AbortSignal.timeout(10000) // 10 second timeout
-      })
+    const response = await fetch(apiEndpoint.url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json"
+      },
+      // Add timeout
+      signal: AbortSignal.timeout(10000) // 10 second timeout
+    })
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-
-      const data = await response.text()
-
-      // Try to parse as JSON first, fallback to text
-      let parsedData
-      try {
-        parsedData = JSON.parse(data)
-      } catch {
-        parsedData = data
-      }
-
-      return apiEndpoint.transform(parsedData)
-    } catch (error) {
-      console.log(`API ${apiEndpoint.name} failed:`, error.message)
-      throw error
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
+
+    const data = await response.text()
+
+    // Try to parse as JSON first, fallback to text
+    let parsedData
+    try {
+      parsedData = JSON.parse(data)
+    } catch {
+      parsedData = data
+    }
+
+    return apiEndpoint.transform(parsedData)
   }
 
   const shortenLink = async (e) => {
@@ -90,13 +85,11 @@ const UrlShortener = () => {
     setErrorMessage("")
 
     try {
-      console.log("Menggunakan TinyURL...")
       const result = await tryAPI(API_ENDPOINTS[0])
 
       if (result) {
         setLinks([...links, result])
         setUrl("")
-        console.log("Link berhasil dipendekkan!")
       }
     } catch (error) {
       console.error("Gagal memendekkan URL:", error.message)

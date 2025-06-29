@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [GitHub Repository](https://github.com/yourusername/url-shortner)
+- Solution URL: [GitHub Repository](https://github.com/wahyuanandaa/url-shortening-api-landing-page)
 - Live Site URL: [Live Demo](https://url-shortner-two-tau.vercel.app/)
 
 ## My process
@@ -135,8 +135,8 @@ In future projects, I plan to focus on:
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- GitHub - [@yourusername](https://github.com/yourusername)
+- Frontend Mentor - [@wahyuanandaa](https://www.frontendmentor.io/profile/wahyuanandaa)
+- GitHub - [@wahyuanandaa](https://github.com/wahyuanandaa)
 
 ## Acknowledgments
 
