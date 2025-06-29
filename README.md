@@ -36,7 +36,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub Repository](https://github.com/wahyuanandaa/url-shortening-api-landing-page)
-- Live Site URL: [Live Demo](https://url-shortner-two-tau.vercel.app/)
+- Live Site URL: [Live Demo](https://wahyuanandaa.github.io/url-shortening-api-landing-page/)
 
 ## My process
 
