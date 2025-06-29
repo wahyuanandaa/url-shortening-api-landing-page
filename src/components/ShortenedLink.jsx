@@ -1,21 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
-const ShortenedLink = ({ data }) => {
-  const [copied, setCopied] = useState(false);
+const ShortenedLink = ({ data, onRemove }) => {
+  const [copied, setCopied] = useState(false)
 
   const copyLink = async () => {
-    await navigator.clipboard.writeText(data.full_short_link);
-    setCopied(true);
-  };
+    await navigator.clipboard.writeText(data.full_short_link)
+    setCopied(true)
+  }
 
   useEffect(() => {
-    if (!copied) return;
+    if (!copied) return
 
     const timeout = setTimeout(() => {
-      setCopied(false);
-    }, 3000);
-    return () => clearTimeout(timeout);
-  }, [copied]);
+      setCopied(false)
+    }, 3000)
+    return () => clearTimeout(timeout)
+  }, [copied])
 
   return (
     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between w-full lg:py-4 lg:px-5 bg-white rounded-md">
@@ -36,17 +36,28 @@ const ShortenedLink = ({ data }) => {
         >
           {data.full_short_link}
         </a>
-        <button
-          onClick={copyLink}
-          className={`sm:w-28 text-white font-semibold py-3 px-8 sm:px-0 hover:bg-opacity-80 rounded-md transition-all ${
-            copied ? "bg-neutral-darkBlue" : "bg-primary-cyan "
-          }`}
-        >
-          {copied ? "Copied!" : "Copy"}
-        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={copyLink}
+            className={`sm:w-28 text-white font-semibold py-3 px-8 sm:px-0 hover:bg-opacity-80 rounded-md transition-all ${
+              copied ? "bg-neutral-darkBlue" : "bg-primary-cyan "
+            }`}
+          >
+            {copied ? "Copied!" : "Copy"}
+          </button>
+          {onRemove && (
+            <button
+              onClick={onRemove}
+              className="sm:w-20 text-white font-semibold py-3 px-4 bg-secondary-red hover:bg-red-600 rounded-md transition-colors"
+              title="Hapus link ini"
+            >
+              Hapus
+            </button>
+          )}
+        </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ShortenedLink;
+export default ShortenedLink
